@@ -1,5 +1,5 @@
 const express = require('express');
-const router = require('./routes/api');
+const router = require('./src/routes/api');
 const app =new express();
 
 const rateLimit = require('express-rate-limit');
@@ -13,7 +13,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 
-let URL = "mongodb+srv://<username>:<password>@cluster0.e27ac.mongodb.net/ecom?retryWrites=true&w=majority";
+let URL = "mongodb+srv://sarwor:<db_password>@cluster0.e27ac.mongodb.net/ecom?retryWrites=true&w=majority";
 let option ={user:'sarwor',pass:"sarwor123",autoIndex:true};
 mongoose.connect(URL, option).then((res)=>{
     console.log("Database Connected");
