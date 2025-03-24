@@ -1,5 +1,6 @@
-const app=require("/app");
-const PORT=8080;
-app.listen(PORT,function (){
-    console.log("Server started")
-})
+const app=require('./src/app');
+const PORT = 5600;
+
+app.listen(PORT, function() {
+    console.log(`App is running on port ${PORT}`);
+});
