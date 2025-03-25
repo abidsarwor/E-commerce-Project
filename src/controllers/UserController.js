@@ -25,9 +25,9 @@ exports.VerifyLogin=async (req,res)=> {
 
 
 exports.UserLogout=async (req,res)=>{
-   /* let cookieOption={expires:new Date(Date.now()-24*6060*1000), httpOnly:false}
-    res.cookie('token',"",cookieOption)
-    return res.status(200).json({status:"success"})*/
+    /* let cookieOption={expires:new Date(Date.now()-24*6060*1000), httpOnly:false}
+     res.cookie('token',"",cookieOption)
+     return res.status(200).json({status:"success"})*/
 }
 
 
@@ -38,15 +38,21 @@ exports.CreateProfile=async (req,res)=>{
 
 
 exports.UpdateProfile=async (req,res)=>{
-   let result=await SaveProfileService(req)
+    let result=await SaveProfileService(req)
     return res.status(200).json(result)
 }
 
 
 exports.ReadProfile=async (req,res)=>{
-   let result=await ReadProfileService(req)
+    let result=await ReadProfileService(req)
     return res.status(200).json(result)
 }
+
+
+
+
+
+
 
 
 

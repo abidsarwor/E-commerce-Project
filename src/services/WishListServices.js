@@ -45,5 +45,5 @@ module.exports={
     WishListService,
     SaveWishListService,
     RemoveWishListService
-       }
+}
 
