@@ -64,10 +64,45 @@ const ProductStore = create((set) => ({
         }
     },
 
+
+    ListByFilterRequest:async(postBody)=>{
+        set({ListProduct:null})
+        let res=await axios.post(`/api/v1/ProductListByFilter/${postBody}`);
+        if(res.data['status']==="success"){
+            set({ListProduct:res.data['data']})
+        }
+    },
+
+
+
+
+
     SearchKeyword:"",
     SetSearchKeyword:async(keyword)=>{
         set({SearchKeyword:keyword})
     },
+
+
+    Details:null,
+    DetailsRequest:async(id)=>{
+        let res=await axios.get(`/api/v1/ProductDetails/${id}`);
+        if(res.data['status']==="success"){
+            set({Details:res.data['data']})
+        }
+    },
+
+
+    ReviewList:null,
+    ReviewListRequest:async(id)=>{
+        let res=await axios.get(`/api/v1/ProductReviewList/${id}`);
+        if(res.data['status']==="success"){
+            set({ReviewList:res.data['data']})
+        }
+    },
+
+
 }))
+
+
 
 export default ProductStore;
