@@ -3,11 +3,11 @@ import FeatureStore from "../store/FeatureStore.js";
 import Layout from "../components/layout/layout.jsx";
 import LegalContents from "../components/features/legal-contents.jsx";
 
-const TermsPage = () => {
+const PrivacyPage = () => {
     const {LegalDetailsRequest} =FeatureStore();
     useEffect(() => {
         (async ()=>{
-            await LegalDetailsRequest("terms")
+            await LegalDetailsRequest("privacy")
         })()
     }, []);
     return (
@@ -17,4 +17,4 @@ const TermsPage = () => {
     );
 };
 
-export default TermsPage;
+export default PrivacyPage;
