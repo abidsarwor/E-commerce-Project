@@ -1,10 +1,14 @@
 import React from 'react';
+import CartList from "../components/cart/cart-list.jsx";
+import Layout from "../components/layout/layout.jsx";
+import Categories from "../components/product/categories.jsx";
 
 const CartPage = () => {
     return (
-        <div>
-            
-        </div>
+        <Layout>
+            <CartList/>
+            <Categories/>
+        </Layout>
     );
 };
 

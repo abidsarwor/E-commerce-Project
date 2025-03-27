@@ -1,11 +1,12 @@
 import React from 'react';
-
-const OrderPage = () => {
+import Layout from "../components/layout/layout.jsx";
+import InvoiceList from "../components/invoice/invoice-list.jsx";
+const CartPage = () => {
     return (
-        <div>
-            
-        </div>
+        <Layout>
+            <InvoiceList/>
+        </Layout>
     );
 };
 
-export default OrderPage;
+export default CartPage;

@@ -4,7 +4,7 @@ import "react-image-gallery/styles/css/image-gallery.css"
 
 
 
-const ProductImage = () => {
+const ProductImages = () => {
     const {Details}=ProductStore();
     let images=[
         {original: Details[0]['details']['img1'], thumbnail: Details[0]['details']['img1']},
@@ -23,4 +23,4 @@ const ProductImage = () => {
     );
 };
 
-export default ProductImage;
+export default ProductImages;

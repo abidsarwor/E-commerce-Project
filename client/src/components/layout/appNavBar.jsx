@@ -1,11 +1,45 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React, {useEffect} from 'react';
+import {Link,useNavigate} from "react-router-dom";
 import logo from "../../assets/images/plainb-logo.svg"
 import ProductStore from "../../store/ProductStore.js";
+import UserSubmitButton from "../user/UserSubmitButton.jsx";
+import UserStore from "../../store/UserStore.js";
+import CartStore from "../../store/CartStore.js";
+import WishStore from "../../store/WishStore.js";
 
 
-const appNavBar = () => {
-    const {setSearchKeyword,SearchKeyword}=ProductStore();
+
+
+
+const AppNavBar = () => {
+    const navigate = useNavigate();
+   const {SetSearchKeyword,SearchKeyword}=ProductStore();
+    const{isLogin,UserLogoutRequest}=UserStore();
+   const {CartCount,CartListRequest}=CartStore();
+    const {WishCount,WishListRequest}=WishStore();
+
+
+
+    const onLogout=async()=>{
+        await UserLogoutRequest()
+        sessionStorage.clear();
+        localStorage.clear();
+        navigate("/");
+    }
+
+
+    useEffect(() => {
+        (async ()=>{
+            if(isLogin()){
+                await  CartListRequest();
+                await WishListRequest();
+
+            }
+        })()
+    }, []);
+
+
+
     return (
         <>
             <div className="container-fluid text-white p-2 bg-success">
@@ -62,14 +96,44 @@ const appNavBar = () => {
                                 </svg>
                             </Link>
                         </div>
-                        <Link to="/cart" type="button" className="btn ms-2 btn-light position-relative">
-                            <i className="bi text-dark bi-bag"></i>
-                        </Link>
-                        <Link to="/wish" type="button" className="btn ms-2 btn-light d-flex">
-                            <i className="bi text-dark bi-heart"></i>
-                        </Link>
-                        <Link type="button" className="btn ms-3 btn-success d-flex" to="/profile">Profile</Link>
-                        <Link type="button" className="btn ms-3 btn-success d-flex" to="/profile">Logout</Link>
+
+                        {
+                            isLogin()?(
+                                <>
+                                <Link to="/cart" type="button" className="btn ms-2 btn-light position-relative">
+                                    <i className="bi text-dark bi-bag"></i> Cart
+                                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">{CartCount}
+                                        {CartCount}
+                                        <span className="visually-hideen">unread message</span>
+                                        </span>
+                                </Link>
+                                <Link to="/wish" type="button" className="btn ms-4 btn-light position-relative">
+                                    <i className="bi text-dark bi-heart"></i>
+                                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">{CartCount}
+                                        {WishCount}
+                                        <span className="visually-hideen">unread message</span>
+                                        </span>
+                                </Link>
+
+
+                                    <UserSubmitButton onClick={onLogout} text="Logout" className="btn ms-3 btn-success d-flex"/>
+                                    <Link type="button" className="btn ms-3 btn-success d-flex" to="/profile">Profile</Link>
+                                </>
+                            ):(
+                                <>
+                                    <Link to="/login" type="button" className="btn ms-2 btn-light position-relative">
+                                        <i className="bi text-dark bi-bag"></i>
+                                    </Link>
+                                    <Link to="/login" type="button" className="btn ms-2 btn-light d-flex">
+                                        <i className="bi text-dark bi-heart"></i>
+                                    </Link>
+
+
+                                    <Link type="button" className="btn ms-3 btn-success d-flex" to="/login">Login</Link>
+                                </>
+                            )
+                        }
+
                     </div>
                 </div>
             </nav>
@@ -78,4 +142,4 @@ const appNavBar = () => {
     );
 };
 
-export default appNavBar;
+export default AppNavBar;

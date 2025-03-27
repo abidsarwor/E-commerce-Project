@@ -14,8 +14,20 @@ import ComplainPage from "./pages/complain-page.jsx";
 import PrivacyPage from "./pages/privacy-page.jsx";
 import OtpPage from "./pages/otp-page.jsx";
 import LoginPage from "./pages/login-page.jsx";
+import WishPage from "./pages/wish-page.jsx";
+
+import OrderPage from "./pages/order-page.jsx";
+import InvoicePage from "./pages/invoice-page.jsx";
 
 
+
+function ProfilePage() {
+    return null;
+}
+
+function CartPage() {
+    return null;
+}
 
 const App = () => {
   return (
@@ -35,8 +47,16 @@ const App = () => {
          <Route path="/contact" element={<ContactPage />}/>
          <Route path="/complain" element={<ComplainPage />}/>
 
+
+          <Route path="/profile" element={<ProfilePage/>}/>
           <Route path="/login" element={<LoginPage />}/>
           <Route path="/otp" element={<OtpPage />}/>
+          <Route path="/cart" element={<CartPage/>}/>
+          <Route path="/wish" element={<WishPage/>}/>
+          <Route path="/orders" element={<OrderPage/>}/>
+          <Route path="/invoice/:id" element={<InvoicePage/>}/>
+
+
 
       </Routes>
     </BrowserRouter>

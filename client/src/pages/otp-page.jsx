@@ -1,11 +1,12 @@
 import React from 'react';
 import Layout from "../components/layout/layout.jsx";
-import LoginForm from "../components/user/login-form.jsx";
+
+import OtpForm from "../components/user/otp-form.jsx";
 
 const OtpPage = () => {
     return (
       <Layout>
-          <LoginForm />
+          <OtpForm/>
       </Layout>
     );
 };
