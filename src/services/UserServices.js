@@ -32,7 +32,8 @@ const VerifyOTPService = async (req) => {
         let otp=req.params.otp;
 
         // User Count
-        let total=await UserModel.find({email:email,otp:otp}).count('total');
+        let total = await UserModel.find({ email: email, otp: otp }).countDocuments();
+
 
 
         if(total===1){
@@ -97,5 +98,6 @@ module.exports={
     SaveProfileService,
     ReadProfileService
 }
+
 
 

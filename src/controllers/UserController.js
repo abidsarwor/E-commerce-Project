@@ -25,9 +25,9 @@ exports.VerifyLogin=async (req,res)=> {
 
 
 exports.UserLogout=async (req,res)=>{
-    /* let cookieOption={expires:new Date(Date.now()-24*6060*1000), httpOnly:false}
+    let cookieOption={expires:new Date(Date.now()-24*6060*1000), httpOnly:false}
      res.cookie('token',"",cookieOption)
-     return res.status(200).json({status:"success"})*/
+     return res.status(200).json({status:"success"})
 }
 
 
@@ -47,6 +47,15 @@ exports.ReadProfile=async (req,res)=>{
     let result=await ReadProfileService(req)
     return res.status(200).json(result)
 }
+
+
+
+
+
+
+
+
+
 
 
 

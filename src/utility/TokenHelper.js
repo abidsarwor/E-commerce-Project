@@ -8,11 +8,11 @@ exports.EncodeToken=(email,user_id)=>{
 }
 
 exports.DecodeToken=(token)=>{
-try{
-    let KEY="123-ABC-XYZ";
-    return jwt.verify(token,KEY)
-}
-catch(e){
-    return null
-}
+    try{
+        let KEY="123-ABC-XYZ";
+        return jwt.verify(token,KEY)
+    }
+    catch(e){
+        return null
+    }
 }

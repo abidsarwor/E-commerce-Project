@@ -45,7 +45,8 @@ const ListByBrandService = async (req) => {
 
         let BrandID=new ObjectId(req.params.BrandID);
 
-        let MatchStage={$match:{brandID:BrandID}}
+        let MatchStage={$match:{brandID:BrandID}};
+        console.log("BrandID:", BrandID);
 
         let JoinWithBrandStage= {$lookup:{from:"brands",localField:"brandID",foreignField:"_id",as:"brand"}};
 
@@ -68,6 +69,7 @@ const ListByBrandService = async (req) => {
             ProjectionStage
 
         ])
+        console.log("Data:", data);
         return {status:"success",data:data}
 
     }catch (e) {
